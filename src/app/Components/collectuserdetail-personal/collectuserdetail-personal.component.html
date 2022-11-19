@@ -1,0 +1,43 @@
+<app-navigationbar></app-navigationbar>
+<div class="container">
+    <div class="row" id="dvPd">
+        <h3><u> Please fill personal details</u></h3>
+        <div class="col-md-6" style="opacity: 70%;">
+            <img src="../../../assets/Images/Personal.jpg" width="100%">
+        </div>
+        <div class="col-md-6">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="rdMale" autocomplete="off" checked
+                    (change)="Radiochange('M')">
+                <label class="btn btn-outline-primary" for="rdMale">
+                    <img src="../../../assets/Images/male.png" class="t4Img">
+                    <br>Male
+                </label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="rdFemale" autocomplete="off"
+                    (change)="Radiochange('F')">
+                <label class="btn btn-outline-success" for="rdFemale">
+                    <img src="../../../assets/Images/female.png" class="t4Img">
+                    <br>Female
+                </label>
+            </div>
+            <div class="row mt-n1">
+                Enter Full Name
+                <input type="text" id="txtFullname" name="txtFullname" placeholder="Enter full name"
+                    class="form-control">
+            </div>
+            <br>
+            <div class="row mt-n1">
+                Enter Mobile Number
+                <input type="number" maxlength=10 id="txtMobile" name="txtMobile"                    
+                    placeholder="Enter mobile number" class="form-control"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                    >
+            </div>
+            <hr>
+            <a class="btn btn-secondary" (click)="GoBack()">Go Back</a>
+            &nbsp;
+            <a class="btn btn-primary" (click)="OnClickViewPlan()">View Plans</a>
+        </div>
+    </div>
+</div>

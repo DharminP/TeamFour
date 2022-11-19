@@ -1,0 +1,49 @@
+<app-navigationbar></app-navigationbar>
+<div class="container">
+    <div class="row" id="dvPolicyMember">
+        <div class="col-md-12">            
+            <h3><u> Know More about Health Insurance</u></h3>
+            <ul>
+                <li>
+                    Health insurance is a type of insurance that covers medical expenses incurred on an illnessor
+                    injury. These medical expenses include hospitalisation expenses, medicine cost and doctor/physician
+                    fees as well.
+                </li>
+                <li>
+                    Health insurance aims to take care of your expenses in a time of medical crisis. To put it simply,
+                    the insured pays regular premiums to the insurance provider, and in return, they offer financial
+                    support to them.
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="col-md-12">            
+            <h3>Who would you like to insure?</h3><br>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" value="S" class="btn-check" id="btncheck1" name="btncheck1" autocomplete="off" checked disabled>
+                <label class="btn btn-outline-primary" for="btncheck1">
+                    <img src="../../../assets/Images/self.png" class="t4Img">
+                    <br>Self
+                </label>
+                <br>
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck2">
+                    <img src="../../../assets/Images/spouse.png" class="t4Img">
+                    <br>Spouse
+                </label>
+
+                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck3">
+                    <img src="../../../assets/Images/children2.png" class="t4Img">
+                    <br>Children
+                </label>
+            </div>
+            <p class="text-right"> * Click to select member</p>
+        </div>
+        <div class="text-center">          
+            <a class="btn btn-secondary" (click)="OnClickBack()">Go Back</a>
+            &nbsp;
+            <a class="btn btn-primary" (click)="onClickProceed()">Proceed</a>            
+        </div>
+    </div>
+</div>

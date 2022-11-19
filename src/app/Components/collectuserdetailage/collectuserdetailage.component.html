@@ -1,0 +1,23 @@
+<app-navigationbar></app-navigationbar>
+<div class="container">    
+    <div class="row" id="dvAge">
+        <h3><u> How old you are ?</u></h3>
+        <div class="col-md-6">
+            <img src="../../../assets/Images/Age.jpg" width="100%">
+        </div>
+        <div class="col-md-6">            
+            <label>Your Age range</label><br>
+            <select class="form-control w-25" id="ddlAge" name="ddlAge">
+                <option value="18-30" >18-30</option>
+                <option value="30-45">30-45</option>
+                <option value="45-60">45-60</option>                
+            </select>                        
+            <br>            
+            <br>            
+            <a class="btn btn-secondary" (click)="OnClickBack()">Go Back</a>
+            &nbsp;
+            <a class="btn btn-primary" (click)="onClickProceed()">Proceed</a>
+        </div>        
+        
+    </div>
+</div>

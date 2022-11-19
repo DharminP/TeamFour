@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr.css';
+
+
+.t4Type {
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 40px;
+    cursor: pointer;
+}
+.t4Bold {
+    font-weight: bold;
+    text-align: center;
+}
+.t4Img{
+    width: 20%;
+}
