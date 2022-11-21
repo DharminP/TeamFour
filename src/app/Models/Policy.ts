@@ -6,7 +6,7 @@ export class policy {
     pdesc = "";
     ptype = "";
     pCoverage?: number;
-    pPremium?: number
+    pPremium?: number = 1;
     Gender = "";
     AgeGroup = "";
     Members = "";
