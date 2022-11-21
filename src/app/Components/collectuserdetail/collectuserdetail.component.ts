@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 @Component({
   selector: 'app-collectuserdetail',
   templateUrl: './collectuserdetail.component.html',
@@ -9,7 +10,9 @@ import { ToastrService } from 'ngx-toastr';
 export class CollectuserdetailComponent implements OnInit {
 
   iType: string = "";
-  constructor(private router: Router, private route: ActivatedRoute, private toaster: ToastrService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private toaster: ToastrService
+    , private _UserService: UserService
+  ) { }
 
   ngOnInit(): void {
     const btncheck1 = document.getElementById('btncheck1',) as HTMLInputElement | null;
@@ -33,42 +36,21 @@ export class CollectuserdetailComponent implements OnInit {
         }
       })
   }
-  onClickProceed() {
-    const btncheck1 = document.getElementById('btncheck1',) as HTMLInputElement | null;
+  onClickProceed() {    
     const btncheck2 = document.getElementById('btncheck2',) as HTMLInputElement | null;
     const btncheck3 = document.getElementById('btncheck3',) as HTMLInputElement | null;
 
-    console.log(btncheck1?.checked);
-    if (!btncheck1?.checked && !btncheck2?.checked && !btncheck3?.checked) {
-      this.toaster.error('Please select atleast 1 member')
-      return;
-    }
 
-    this.router.navigate(['/collectage'], {
-      queryParams: {
-        'iType': this.iType
-        , 'U': btncheck1?.checked
-        , 'S': btncheck2?.checked
-        , 'C': btncheck3?.checked
-      }
-    });
+    this._UserService.userdetalmodel.isSelfSelected = true;
+    if (btncheck2?.checked)
+      this._UserService.userdetalmodel.isSpouseSelected = btncheck2?.checked
+    if (btncheck3?.checked)
+      this._UserService.userdetalmodel.isChildrenSelected = btncheck3?.checked
+
+    this.router.navigate(['/collectage']);
   }
   OnClickBack() {
-    this.route.queryParamMap.subscribe(
-      {
-        next: (param) => {
-          this.router.navigate(['/Insurancetyperoute'],
-            {
-              queryParams:
-              {
-                'iType': param.get('iTtype')
-                , 'U': param.get('U')
-                , 'S': param.get('S')
-                , 'C': param.get('C')
-              }
-            });
-        }
-      });
+    this.router.navigate(['/Insurancetyperoute'])
   }
 
 }
