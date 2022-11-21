@@ -10,17 +10,22 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="" ><b>Home</b></a>
-                </li>                
+                    <a class="nav-link active" aria-current="page" routerLink=""><b>Home</b></a>
+                </li>
             </ul>
-            <form class="d-flex">                
-                <a id="aLogin">
-                    <img src="../../../assets/Images/Login.png" width="30px" title="Login">                    
+            <form class="d-flex">
+                <a id="aLogin" *ngIf="!appStateService.userId" (click)="onLogin()">
+                    <img src="../../../assets/Images/Login.png" width="30px" title="Login">
                 </a>
-                <a id="aLogin" style="display: none;">
-                    <img src="../../../assets/Images/logout.png" width="30px" title="Logout">                    
+                <!-- <a id="aLogin" (click)="onUpdateProfile()">
+                    Update profile
+                </a> -->
+                <label class="username" *ngIf="appStateService.userId">{{appStateService.userDetails.email}}</label>
+                <a id="aLogin" *ngIf="appStateService.userId" (click)="onLogout()">
+                    <img src="../../../assets/Images/logout.png" width="30px" title="Logout">
                 </a>
             </form>
         </div>
     </div>
 </nav>
+<router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,33 +12,67 @@ import { ViewallplansComponent } from './Components/viewallplans/viewallplans.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { AppStateService } from './appStateService';
+import { TokenInterceptor } from './tokenInterceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InsurancetypeComponent,
-    NavigationbarComponent,
+    NavigationbarComponent, 
     CollectuserdetailComponent,
     CollectuserdetailageComponent,
     CollectuserdetailPersonalComponent,
-    ViewallplansComponent,   
-  
-
+    ViewallplansComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    Ng2SearchPipeModule,    
+    Ng2SearchPipeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    KeycloakAngularModule,
     ToastrModule.forRoot()
 
   ],
-  providers: [],
+  providers: [AppStateService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'Team4_POC',
+        clientId: 'POC',
+      },
+      initOptions: {
+        //onLoad: 'login-required',
+        //onLoad: 'check-sso',
+        checkLoginIframe: false,
+      },
+      loadUserProfileAtStartUp: true,
+    });
+}

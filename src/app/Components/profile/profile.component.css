@@ -1,0 +1,17 @@
+input{
+    width: 15%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    font-size: .875rem;
+    border-radius: 0.25rem
+  }
+  .form-input{
+    width: 250px;
+    margin-bottom: 15px;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    border: 2px solid;
+    font-weight: 600;
+    }
