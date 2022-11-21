@@ -4,34 +4,47 @@ import { CollectuserdetailPersonalComponent } from './Components/collectuserdeta
 import { CollectuserdetailComponent } from './Components/collectuserdetail/collectuserdetail.component';
 import { CollectuserdetailageComponent } from './Components/collectuserdetailage/collectuserdetailage.component';
 import { InsurancetypeComponent } from './Components/insurancetype/insurancetype.component';
+import { NavigationbarComponent } from './Components/navigationbar/navigationbar.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 import { ViewallplansComponent } from './Components/viewallplans/viewallplans.component';
+import { KCAuthGuard } from './custom-keycloak-auth-guard';
 
 const routes: Routes = [
   {
     path: "",
-    component: InsurancetypeComponent
-  },
-  {
-    path: "Insurancetyperoute",
-    component: InsurancetypeComponent
-  },
-  {
-    path: "collectuserdetail",
-    component: CollectuserdetailComponent
-  },
-  {
-    path: "collectage",
-    component: CollectuserdetailageComponent
-  },
-  {
-    path: "collectpersonaldetail",
-    component: CollectuserdetailPersonalComponent
-  },
-  {
-    path: "viewplans",
-    component: ViewallplansComponent
+    component: NavigationbarComponent,
+    children: [
+      {
+        path: "",
+        component: InsurancetypeComponent
+      },
+      {
+        path: "Insurancetyperoute",
+        component: InsurancetypeComponent
+      },
+      {
+        path: "collectuserdetail",
+        component: CollectuserdetailComponent
+      },
+      {
+        path: "collectage",
+        component: CollectuserdetailageComponent
+      },
+      {
+        path: "collectpersonaldetail",
+        component: CollectuserdetailPersonalComponent
+      },
+      {
+        path: "viewplans",
+        component: ViewallplansComponent
+      },
+      {
+        path: "profile",
+        component: ProfileComponent,
+        canActivate: [KCAuthGuard]
+      },
+    ]
   }
-
 ];
 
 @NgModule({
