@@ -4,6 +4,7 @@ import { CollectuserdetailPersonalComponent } from './Components/collectuserdeta
 import { CollectuserdetailComponent } from './Components/collectuserdetail/collectuserdetail.component';
 import { CollectuserdetailageComponent } from './Components/collectuserdetailage/collectuserdetailage.component';
 import { InsurancetypeComponent } from './Components/insurancetype/insurancetype.component';
+import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { NavigationbarComponent } from './Components/navigationbar/navigationbar.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ViewallplansComponent } from './Components/viewallplans/viewallplans.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: "viewplans",
         component: ViewallplansComponent
+      },
+      {
+        path: "mypolicies",
+        component: MyPoliciesComponent
       },
       {
         path: "profile",

@@ -10,6 +10,7 @@ import { AppStateService } from 'src/app/appStateService';
   styleUrls: ['./navigationbar.component.css']
 })
 export class NavigationbarComponent implements OnInit {
+  isdropdown: boolean = false;
 
   constructor(private toaster: ToastrService,
     private keycloakService: KeycloakService,
@@ -29,5 +30,9 @@ export class NavigationbarComponent implements OnInit {
 
   onLogout() {
     this.keycloakService.logout('http://localhost:4200');
+  }
+
+  toggleDropdown() {
+    this.isdropdown = !this.isdropdown;
   }
 }

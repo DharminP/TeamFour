@@ -12,7 +12,12 @@ export class UserService {
 
   constructor(private httpclient: HttpClient) { }
   url = environment.UserDomain;
+  adminUrl = environment.AdminDomain;
   public GetAllPolicy(ptype: string, Gender: string, AgeGroup: string, Members: string, pgrade: string): Observable<policy[]> {
     return this.httpclient.get<policy[]>(this.url + '/Dashboard/GetRelevantPolicies?ptype=GMC&Gender=M&AgeGroup=18-30&Members=U&pgrade=12')
+  }
+
+  public GetMyPolicy(): Observable<policy[]> {
+    return this.httpclient.get<policy[]>(this.adminUrl + '/Policy/MyPolicy?uid=1')
   }
 }
