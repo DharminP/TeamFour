@@ -6,6 +6,7 @@ import { CollectuserdetailageComponent } from './Components/collectuserdetailage
 import { InsurancetypeComponent } from './Components/insurancetype/insurancetype.component';
 import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { NavigationbarComponent } from './Components/navigationbar/navigationbar.component';
+import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ViewallplansComponent } from './Components/viewallplans/viewallplans.component';
 import { KCAuthGuard } from './custom-keycloak-auth-guard';
@@ -48,6 +49,11 @@ const routes: Routes = [
         component: ProfileComponent,
         canActivate: [KCAuthGuard]
       },
+      {
+        path : "Summary",
+        component : PolicySummaryComponent
+   
+      }
     ]
   }
 ];

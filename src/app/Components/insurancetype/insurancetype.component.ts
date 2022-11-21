@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-insurancetype',
@@ -9,15 +10,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InsurancetypeComponent implements OnInit {
 
-  constructor(private toaster: ToastrService, private router: Router) { }
+  constructor(private toaster: ToastrService
+    , private router: Router
+    , private _UserService: UserService) { }
 
   ngOnInit(): void {
   }
   onTypeClick(type: string) {
-    this.router.navigate(['/collectuserdetail']);
-    // this.router.navigate(['/collectuserdetail'], {
-    //   queryParams: { 'iType': type }
-    // })
+    this._UserService.userdetalmodel.InsuranceType = type;
+    this.router.navigate(['/collectuserdetail'])
   }
 }
 

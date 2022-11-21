@@ -19,19 +19,21 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppStateService } from './appStateService';
 import { TokenInterceptor } from './tokenInterceptor';
 import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
-
+import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InsurancetypeComponent,
-    NavigationbarComponent, 
+    NavigationbarComponent,
     CollectuserdetailComponent,
     CollectuserdetailageComponent,
     CollectuserdetailPersonalComponent,
     ViewallplansComponent,
     ProfileComponent,
-    MyPoliciesComponent
+    MyPoliciesComponent,
+    PolicySummaryComponent,    
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { MyPoliciesComponent } from './Components/my-policies/my-policies.compon
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService]
-    }],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

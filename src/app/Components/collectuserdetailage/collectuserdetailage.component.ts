@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-collectuserdetailage',
@@ -8,7 +9,9 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class CollectuserdetailageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router
+    , private _UserService: UserService
+  ) { }
 
 
   ngOnInit(): void {
@@ -24,22 +27,9 @@ export class CollectuserdetailageComponent implements OnInit {
   }
   onClickProceed() {
     const ddlAge = document.getElementById('ddlAge') as HTMLInputElement | null;
-    this.route.queryParamMap.subscribe({
-      next: (param) => {
-        this.router.navigate(['/collectpersonaldetail'],
-          {
-            queryParams:
-            {
-              'iType': param.get('iTtype')
-              , 'U': param.get('U')
-              , 'S': param.get('S')
-              , 'C': param.get('C')
-              , 'AgeGroup': ddlAge?.value
-            }
-          })
-      }
-    })
-
+    if (ddlAge)
+      this._UserService.userdetalmodel.UAge = ddlAge.value;
+    this.router.navigate(['/collectpersonaldetail']);
   }
 
   OnClickBack() {
@@ -50,7 +40,7 @@ export class CollectuserdetailageComponent implements OnInit {
             {
               queryParams:
               {
-                'iType': param.get('iTtype')
+                'iType': param.get('iType')
                 , 'U': param.get('U')
                 , 'S': param.get('S')
                 , 'C': param.get('C')

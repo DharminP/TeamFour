@@ -2,6 +2,7 @@ import { Component, IterableDiffers, OnInit, reflectComponentType } from '@angul
 import { ActivatedRoute, Router } from '@angular/router';
 import { __values } from 'tslib';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-collectuserdetail-personal',
@@ -14,6 +15,7 @@ export class CollectuserdetailPersonalComponent implements OnInit {
   constructor(private route: ActivatedRoute
     , private router: Router
     , private toaster: ToastrService
+    , private _UserService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -35,39 +37,17 @@ export class CollectuserdetailPersonalComponent implements OnInit {
         this.toaster.error('Kindly enter valid mobile number!!!')
         return
       }
-    }    
-    this.route.queryParamMap.subscribe({
-      next: (param) => {
-        this.router.navigate(['/viewplans'], {
-          queryParams: {
-            'iType': param.get('iTtype')
-            , 'U': param.get('U')
-            , 'S': param.get('S')
-            , 'C': param.get('C')
-            , 'AgeGroup': param.get('AgeGroup')
-            , 'Gender': this.Gender
-            , 'Name': txtFullname?.value
-            , 'Mobile': txtMobile?.value
-          }
-        }
-        );
-      }
-    })
+    }
+    if (txtFullname)
+      this._UserService.userdetalmodel.UName = txtFullname?.value
+    if (txtMobile)
+      this._UserService.userdetalmodel.UMobileNumber = txtMobile.value
+
+    this._UserService.userdetalmodel.UGender = this.Gender;
+    this.router.navigate(['/viewplans']);    
   }
   GoBack() {
-    this.route.queryParamMap.subscribe({
-      next: (param) => {
-        this.router.navigate(['/collectage'], {
-          queryParams: {
-            'iType': param.get('iTtype')
-            , 'U': param.get('U')
-            , 'S': param.get('S')
-            , 'C': param.get('C')
-            , 'AgeGroup': param.get('AgeGroup')
-          }
-        }
-        );
-      }
-    })
+    this.router.navigate(['/collectage']);
   }
+
 }
