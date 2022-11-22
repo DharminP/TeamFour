@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApplicationExceptionComponent } from './Components/application-exception/application-exception.component';
 import { CollectuserdetailPersonalComponent } from './Components/collectuserdetail-personal/collectuserdetail-personal.component';
 import { CollectuserdetailComponent } from './Components/collectuserdetail/collectuserdetail.component';
 import { CollectuserdetailageComponent } from './Components/collectuserdetailage/collectuserdetailage.component';
@@ -8,10 +9,15 @@ import { MyPoliciesComponent } from './Components/my-policies/my-policies.compon
 import { NavigationbarComponent } from './Components/navigationbar/navigationbar.component';
 import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
 import { ProfileComponent } from './Components/profile/profile.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { ViewallplansComponent } from './Components/viewallplans/viewallplans.component';
 import { KCAuthGuard } from './custom-keycloak-auth-guard';
 
 const routes: Routes = [
+  {
+    path: "appexception",
+    component: ApplicationExceptionComponent
+  },
   {
     path: "",
     component: NavigationbarComponent,
@@ -51,10 +57,14 @@ const routes: Routes = [
         canActivate: [KCAuthGuard]
       },
       {
-        path : "Summary",
-        component : PolicySummaryComponent,
+        path: "Summary",
+        component: PolicySummaryComponent,
         canActivate: [KCAuthGuard]
-   
+      },
+      {
+        path: "securitySettings",
+        component: ResetPasswordComponent,
+        canActivate: [KCAuthGuard]
       }
     ]
   }

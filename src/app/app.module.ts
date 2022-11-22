@@ -20,6 +20,7 @@ import { AppStateService } from './appStateService';
 import { TokenInterceptor } from './tokenInterceptor';
 import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PolicySummaryComponent } from './Components/policy-summary/policy-summa
     ViewallplansComponent,
     ProfileComponent,
     MyPoliciesComponent,
-    PolicySummaryComponent,    
+    PolicySummaryComponent,
+    ResetPasswordComponent,    
 
   ],
   imports: [

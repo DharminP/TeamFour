@@ -15,10 +15,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink="viewplans"><b>View Policies</b></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="mypolicies"
-                        *ngIf="appStateService.userId"><b>My Policies</b></a>
-                </li>
             </ul>
             <form class="d-flex">
                 <a id="aLogin" class="pointer" *ngIf="!appStateService.userId" (click)="onLogin()">
@@ -41,8 +37,10 @@
     <div class="col-10"></div>
     <div class="col-2">
         <a class="nav-link text-white" id="logout">
+            <div class="logoutdropdown" (click)="onMyPolicies()">My Policies</div>
             <!-- <i class="fa fa-user fa-2x"></i> -->
             <div class="logoutdropdown" (click)="onUpdateProfile()">Edit Profile</div>
+            <div class="logoutdropdown" (click)="onSecuritySettings()">Security Settings</div>
             <div class="logoutdropdown" (click)="onLogout(); toggleDropdown()">Logout</div>
         </a>
     </div>
