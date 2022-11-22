@@ -21,11 +21,12 @@ export class NavigationbarComponent implements OnInit {
   }
 
   onUpdateProfile() {
+    this.toggleDropdown();
     this.router.navigate(['/profile']);
   }
 
   onLogin() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/mypolicies']);
   }
 
   onLogout() {

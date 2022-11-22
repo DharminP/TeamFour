@@ -21,6 +21,7 @@ export class ViewallplansComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this._UserService.userdetalmodel)
+    if(this._UserService.userdetalmodel.InsuranceType){
     var member = 'U'
     if (this._UserService.userdetalmodel.isSpouseSelected == true)
       member = member + '_S'
@@ -36,6 +37,16 @@ export class ViewallplansComponent implements OnInit {
           this._UserService._policiesGlobal = result;
         }
       });
+    }
+    else{
+      this._UserService.GetAllPolicies()
+        .subscribe({
+          next: (result) => {
+            this._policies = result;
+            this._UserService._policiesGlobal = result;
+          }
+        });
+    }
   }
   OnClickChoosePolicy(pid: number) {
     this._UserService.userdetalmodel.pid = pid;

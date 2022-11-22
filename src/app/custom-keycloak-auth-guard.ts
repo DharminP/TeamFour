@@ -6,6 +6,7 @@ import {
 } from '@angular/router';
 import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 import { AppStateService } from './appStateService';
+import { UserService } from './Services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class KCAuthGuard extends KeycloakAuthGuard {
   constructor(
     protected override readonly router: Router,
     protected readonly keycloak: KeycloakService,
-    private appStateService: AppStateService
+    private appStateService: AppStateService,
+    private userService: UserService
   ) {
     super(router, keycloak);
   }
@@ -35,6 +37,15 @@ export class KCAuthGuard extends KeycloakAuthGuard {
         idpHint: this.appStateService.idpHint ? this.appStateService.idpHint : '',
       });
     }
+    this.keycloak.loadUserProfile().then((x) => {
+      this.appStateService.userId = x.id;
+      this.appStateService.userDetails = x;
+      this.userService.userdetalmodel.InsuranceType = "GMC";
+      this.userService.userdetalmodel.UAge = "18-30";
+      this.userService.userdetalmodel.UGender = "M";
+      this.userService.userdetalmodel.isSelfSelected = true;
+
+    });
 
     // Get the roles required from the route.
     const requiredRoles = route.data['roles'];

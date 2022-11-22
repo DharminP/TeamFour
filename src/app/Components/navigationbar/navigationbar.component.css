@@ -1,7 +1,28 @@
-
 @import "../../../assets/styles/global.scss";
 
 .username {
     color: white;
     margin-right: 5px;
+}
+
+#profile,
+#logout {
+    cursor: pointer;
+}
+
+.logoutdropdown {
+    background: black;
+    padding: 10px 45px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#logout {
+    z-index: 8;
+    top: 31px;
+    position: absolute;
+    opacity: 0.9;
+    width: 40%;
+    right: 6px;
 }

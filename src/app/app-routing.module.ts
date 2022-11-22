@@ -42,7 +42,8 @@ const routes: Routes = [
       },
       {
         path: "mypolicies",
-        component: MyPoliciesComponent
+        component: MyPoliciesComponent,
+        canActivate: [KCAuthGuard]
       },
       {
         path: "profile",
@@ -51,7 +52,8 @@ const routes: Routes = [
       },
       {
         path : "Summary",
-        component : PolicySummaryComponent
+        component : PolicySummaryComponent,
+        canActivate: [KCAuthGuard]
    
       }
     ]

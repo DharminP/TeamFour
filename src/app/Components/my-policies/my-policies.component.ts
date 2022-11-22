@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { policy } from 'src/app/Models/Policy';
+import { policy, userPolicy } from 'src/app/Models/Policy';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./my-policies.component.css']
 })
 export class MyPoliciesComponent implements OnInit {
-  _mypolicies = new Array<policy>;
+  _mypolicies = new Array<userPolicy>;
 
   constructor(private _UserService: UserService,
     private route: ActivatedRoute,

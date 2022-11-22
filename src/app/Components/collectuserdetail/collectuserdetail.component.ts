@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UsersDetail } from 'src/app/Models/UsersDetail';
 import { UserService } from 'src/app/Services/user.service';
 @Component({
   selector: 'app-collectuserdetail',
@@ -36,16 +37,12 @@ export class CollectuserdetailComponent implements OnInit {
         }
       })
   }
-  onClickProceed() {    
-    const btncheck2 = document.getElementById('btncheck2',) as HTMLInputElement | null;
-    const btncheck3 = document.getElementById('btncheck3',) as HTMLInputElement | null;
-
-
+  onClickProceed() {
+    const btncheck2 = document.getElementById('btncheck2',) as HTMLInputElement;
+    const btncheck3 = document.getElementById('btncheck3',) as HTMLInputElement;
     this._UserService.userdetalmodel.isSelfSelected = true;
-    if (btncheck2?.checked)
-      this._UserService.userdetalmodel.isSpouseSelected = btncheck2?.checked
-    if (btncheck3?.checked)
-      this._UserService.userdetalmodel.isChildrenSelected = btncheck3?.checked
+    this._UserService.userdetalmodel.isSpouseSelected = btncheck2.checked;
+    this._UserService.userdetalmodel.isChildrenSelected = btncheck3.checked;
 
     this.router.navigate(['/collectage']);
   }

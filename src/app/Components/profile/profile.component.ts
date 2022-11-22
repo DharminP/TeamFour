@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
     private keycloakService: KeycloakService,
     private profileService: ProfileService,
     private appStateService: AppStateService,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private toaster: ToastrService) { }
 
   ngOnInit(): void {
@@ -26,19 +26,15 @@ export class ProfileComponent implements OnInit {
       firstName: [''],
       lastName: [''],
     });
-    this.keycloakService.loadUserProfile().then((x) => {
-      this.appStateService.userId = x.id;
-      this.appStateService.userDetails = x;
-      this.profileForm.patchValue({
-        firstName: this.appStateService.userDetails.firstName,
-        lastName: this.appStateService.userDetails.lastName
-      })
-    });
+    this.profileForm.patchValue({
+      firstName: this.appStateService.userDetails.firstName,
+      lastName: this.appStateService.userDetails.lastName
+    })
   }
 
   onSubmit() {
     this.profileService.UpdateProfile(this.profileForm.value, (res: any) => {
       this.toaster.success('Profile updated successfully');
-    }, (err: any) => { this.toaster.error('Error occured while updating the profile.');});
+    }, (err: any) => { this.toaster.error('Error occured while updating the profile.'); });
   }
 }
