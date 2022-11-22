@@ -14,3 +14,8 @@ export class policy {
     pgrade?: number;
     pstatus = "";
 }
+
+export class userPolicy extends policy {
+    uid?: number;
+    policyId = "";
+}

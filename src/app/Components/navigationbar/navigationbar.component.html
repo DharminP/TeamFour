@@ -12,20 +12,41 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" routerLink=""><b>Home</b></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="viewplans"><b>View Policies</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="mypolicies"
+                        *ngIf="appStateService.userId"><b>My Policies</b></a>
+                </li>
             </ul>
             <form class="d-flex">
-                <a id="aLogin" *ngIf="!appStateService.userId" (click)="onLogin()">
+                <a id="aLogin" class="pointer" *ngIf="!appStateService.userId" (click)="onLogin()">
                     <img src="../../../assets/Images/Login.png" width="30px" title="Login">
                 </a>
                 <!-- <a id="aLogin" (click)="onUpdateProfile()">
                     Update profile
                 </a> -->
-                <label class="username" *ngIf="appStateService.userId">{{appStateService.userDetails.email}}</label>
-                <a id="aLogin" *ngIf="appStateService.userId" (click)="onLogout()">
+                <label class="username" *ngIf="appStateService.userId">{{appStateService.userDetails.email}}
+                    <a (click)="toggleDropdown()" style="margin-right: 5px;margin-left: 10px;font-weight: 900;">^
+                    </a></label>
+                <a id="aLogin" class="pointer" *ngIf="appStateService.userId" (click)="onLogout()">
                     <img src="../../../assets/Images/logout.png" width="30px" title="Logout">
                 </a>
             </form>
         </div>
     </div>
 </nav>
+<div class="row" id="logout" *ngIf="isdropdown">
+    <div class="col-10"></div>
+    <div class="col-2">
+        <a class="nav-link text-white" id="logout">
+            <!-- <i class="fa fa-user fa-2x"></i> -->
+            <div class="logoutdropdown" (click)="onUpdateProfile()">Edit Profile</div>
+            <div class="logoutdropdown" (click)="onLogout(); toggleDropdown()">Logout</div>
+        </a>
+    </div>
+</div>
+
+
 <router-outlet></router-outlet>

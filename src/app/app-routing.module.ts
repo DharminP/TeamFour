@@ -4,6 +4,7 @@ import { CollectuserdetailPersonalComponent } from './Components/collectuserdeta
 import { CollectuserdetailComponent } from './Components/collectuserdetail/collectuserdetail.component';
 import { CollectuserdetailageComponent } from './Components/collectuserdetailage/collectuserdetailage.component';
 import { InsurancetypeComponent } from './Components/insurancetype/insurancetype.component';
+import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { NavigationbarComponent } from './Components/navigationbar/navigationbar.component';
 import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
 import { ProfileComponent } from './Components/profile/profile.component';
@@ -40,13 +41,19 @@ const routes: Routes = [
         component: ViewallplansComponent
       },
       {
+        path: "mypolicies",
+        component: MyPoliciesComponent,
+        canActivate: [KCAuthGuard]
+      },
+      {
         path: "profile",
         component: ProfileComponent,
         canActivate: [KCAuthGuard]
       },
       {
         path : "Summary",
-        component : PolicySummaryComponent
+        component : PolicySummaryComponent,
+        canActivate: [KCAuthGuard]
    
       }
     ]

@@ -10,6 +10,7 @@ import { AppStateService } from 'src/app/appStateService';
   styleUrls: ['./navigationbar.component.css']
 })
 export class NavigationbarComponent implements OnInit {
+  isdropdown: boolean = false;
 
   constructor(private toaster: ToastrService,
     private keycloakService: KeycloakService,
@@ -20,14 +21,19 @@ export class NavigationbarComponent implements OnInit {
   }
 
   onUpdateProfile() {
+    this.toggleDropdown();
     this.router.navigate(['/profile']);
   }
 
   onLogin() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/mypolicies']);
   }
 
   onLogout() {
     this.keycloakService.logout('http://localhost:4200');
+  }
+
+  toggleDropdown() {
+    this.isdropdown = !this.isdropdown;
   }
 }

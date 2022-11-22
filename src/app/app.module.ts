@@ -18,9 +18,8 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppStateService } from './appStateService';
 import { TokenInterceptor } from './tokenInterceptor';
+import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
-
-
 
 @NgModule({
   declarations: [
@@ -31,9 +30,9 @@ import { PolicySummaryComponent } from './Components/policy-summary/policy-summa
     CollectuserdetailageComponent,
     CollectuserdetailPersonalComponent,
     ViewallplansComponent,
-    ProfileComponent,    
-    PolicySummaryComponent,   
-  
+    ProfileComponent,
+    MyPoliciesComponent,
+    PolicySummaryComponent,    
 
   ],
   imports: [
