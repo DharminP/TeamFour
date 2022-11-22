@@ -36,4 +36,12 @@ export class NavigationbarComponent implements OnInit {
   toggleDropdown() {
     this.isdropdown = !this.isdropdown;
   }
+
+  onSecuritySettings() {
+    this.router.navigate(['/securitySettings']);
+  }
+
+  onMyPolicies() {
+    this.router.navigate(['/mypolicies']);
+  }
 }

@@ -38,7 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
   // }
 
   private addTokenToRequest(request: HttpRequest<any>, token: string): HttpRequest<any> {
-    if (this.router.url.includes("/profile")) {
+    if (this.router.url.includes("/profile") || this.router.url.includes("/securitySettings")) {
       return request.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
     }
     return request.clone();
