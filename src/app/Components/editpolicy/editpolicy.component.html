@@ -1,0 +1,111 @@
+<div class="container mt-3">
+    <h3>Edit Policy</h3>
+    <hr>
+    <form #form="ngForm" (ngSubmit)="OnClickSavePolicy()">
+        <div class="row">
+            <div class="col">
+                <label class="col-form-label">Policy Name <span style="color:red">*</span></label>
+                <input type="text" id="txtpolicyname" name="txtpolicyname" class="form-control"
+                    placeholder="Policy Name" [(ngModel)]="policy.pname">
+            </div>
+            <div class="col">
+                <label class="col-form-label">Policy Type <span style="color:red">*</span></label>
+                <select id="ddlPolicyType" name="ddlPolicyType" class="form-control"  required="required"
+                    [(ngModel)]="policy.ptype">
+                    <option [value]="null">-- Select --</option>
+                    <option value="GMC">GMC</option>
+                    <option value="GPA">GPA</option>
+                    <option value="GTL">GTL</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="col-form-label">Short Description</label>
+                <input type="text" id="txtpdesc_short" name="txtpdesc_short" class="form-control" placeholder="Short Description"
+                    [(ngModel)]="policy.pdesc_short" required="required">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="col-form-label">Grade <span style="color:red">*</span></label>
+                <input type="number" id="txtgrade" name="txtgrade" class="form-control" placeholder="Grade"
+                    [(ngModel)]="policy.pgrade" required="required">
+            </div>
+            <div class="col">
+                <label class="col-form-label">Coverage</label> 
+                <input type="text" id="txtCoverage" name="txtCoverage" class="form-control" placeholder="Coverage"
+                    [(ngModel)]="policy.pCoverage" required="required">
+            </div>
+            <div class="col">
+                <label class="col-form-label">Insurer <span style="color:red">*</span></label> 
+                    <select class="form-control"id="txtInsurer" name="txtInsurer" required="required"
+                    [(ngModel)]="policy.insurer">
+                    <option [value]="null">---Select---</option>
+                    <option value="ICICI">ICICI</option>
+                    <option value="SBI">SBI</option>
+                    <option value="HDFC">HDFC</option>
+                    <option value="ICICI">ICICI</option>
+                    <option value="NATIONAL">NATIONAL</option>
+                    <option value="STARS">STARS</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label class="col-form-label">Premium</label>
+                <input type="text" id="txtPremium" name="txtPremium" class="form-control" placeholder="Premium"
+                    [(ngModel)]="policy.pPremium" required="required">
+            </div>
+            <div class="col">
+                <label class="col-form-label">Gender</label> 
+                <select class="form-control" id="ddlpGender" name="ddlGender" required="required"
+                    [(ngModel)]="policy.gender">
+                    <option [value]="null">-- Select --</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Others</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="col-form-label">Age Group</label> 
+                <select class="form-control" id="ddlageGroup" name="ddlageGroup" required="required"
+                    [(ngModel)]="policy.ageGroup">
+                    <option [value]="null">---Select---</option>
+                    <option value="18-30">18-30 Years</option>
+                    <option value="30-45">30-45 Years</option>
+                    <option value="45-60">45-60 Years</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">   
+            <div class="col">
+                <label class="col-form-label">Members</label>
+                <select class="form-control" id="ddlMembers" name="ddlMembers" required="required"
+                [(ngModel)]="policy.members">
+                <option [value]="null">---Select---</option>
+                <option value="U">Self</option>
+                <option value="S">Spouse</option>
+                <option value="C">Child</option>
+                </select>
+            </div>
+           
+            <div class="col">
+                <label class="col-form-label">Description</label> 
+                <textarea type="text" id="txtDescription" name="txtDescription" class="form-control" placeholder="Description"
+                    [(ngModel)]="policy.pdesc" required="required"> </textarea> 
+            </div>
+            <div class="col">
+                <label class="col-form-label">Status</label> 
+                <select class="form-control" id="ddlpolicytype" name="ddlpolicytype" required="required"
+                    [(ngModel)]="policy.pstatus">
+                    <option [value]="0">-- Select --</option>
+                    <option value="A">Active</option>
+                    <option value="I">Inactive</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <!-- ---------------------------------------------- -->
+        <input type="submit" class="btn btn-warning" style="width: 100px" value="Save"> &nbsp;
+        <input type="button" class="btn btn-danger" style="width: 100px" routerLink="../../allpolicies" value="Cancel">
+    </form>
+</div>

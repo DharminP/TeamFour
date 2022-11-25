@@ -1,0 +1,81 @@
+<div class="container py-5">
+    <div class="row justify-content-center mt-3 mb-3">
+        <div class="col-md-9 col-xl-8">
+            <input type="text" [(ngModel)]="term" class="form-control" placeholder="🔍 Search">
+        </div>
+        <div class="col-md-3 col-xl-2">
+            <input type="button" class="form-control btn btn-success" routerLink="/addnewpolicy" value="Add New Policy">
+        </div>
+    </div>
+    <div *ngFor="let policy of policies | filter : term">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-10">
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <img src="../../../assets/Images/{{policy.insurer}}.png" alt="Image Not found"
+                                        class="w-100" onerror="this.src='../../../assets/Images/Insurer-alt.png'" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h5> {{policy.pname}}({{policy.ptype}})</h5>
+
+                                <div class="d-flex flex-row text-center">
+                                    Cover : &nbsp;<span class="text-primary"> ₹
+                                        {{policy.pCoverage}}</span>
+                                </div>
+
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>Age Group : {{policy.ageGroup}}</span>
+                                </div>
+                                <p class="mb-4 mb-md-0">
+                                    {{policy.pdesc}}
+                                </p>
+                                <p class="mb-4 mb-md-0">
+                                    Gender : {{policy.gender}} | Members : {{policy.members}} | Grade :
+                                    {{policy.pgrade}}
+                                </p>                                
+                                <div *ngIf="policy.pstatus=='A'; then thenBlock else elseBlock"></div>
+                                <ng-template #thenBlock><p class="text-success">Active</p></ng-template>
+                                <ng-template #elseBlock><p class="text-danger">InActive</p></ng-template>                                
+                                
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                <h6 class="text-success">Premium</h6>
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 me-1">₹ {{policy.pPremium}}</h4>/year
+                                    <!-- <span class="text-danger"><s>$20.99</s></span> -->
+                                </div>
+
+                                <div class="d-flex flex-column mt-4">
+                                    <a type="button" class="btn btn-warning"
+                                        [routerLink]="['/editpolicy',policy.pid]">Edit</a>&nbsp;
+                                    <input type="button" class="btn btn-danger" value="Delete"
+                                        (click)="OnDeleteClick(content,policy.pid)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure to delete this?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+    </div>
+</ng-template>

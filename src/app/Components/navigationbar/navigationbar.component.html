@@ -9,11 +9,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!isAdmin">
                     <a class="nav-link active" aria-current="page" routerLink=""><b>Home</b></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!isAdmin">
                     <a class="nav-link active" aria-current="page" routerLink="viewplans"><b>View Policies</b></a>
+                </li>
+                <li class="nav-item">
+                    <a  *ngIf="isAdmin" class="nav-link active" aria-current="page" routerLink="allpolicies"><b>All Policies</b></a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -24,7 +27,8 @@
                     Update profile
                 </a> -->
                 <label class="username" *ngIf="appStateService.userId">{{appStateService.userDetails.email}}
-                    <a (click)="toggleDropdown()" style="margin-right: 5px;margin-left: 10px;font-weight: 900;">^
+                    <a (click)="toggleDropdown()" style="margin-right: 5px;margin-left: 10px;font-weight: 900;">
+                        <img src="../../../assets/Images/Profile.svg" style="background-color: white;border-radius: 15px;height: 30px;cursor: pointer;">
                     </a></label>
                 <a id="aLogin" class="pointer" *ngIf="appStateService.userId" (click)="onLogout()">
                     <img src="../../../assets/Images/logout.png" width="30px" title="Logout">

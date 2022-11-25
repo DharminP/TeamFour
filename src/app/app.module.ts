@@ -21,6 +21,10 @@ import { TokenInterceptor } from './tokenInterceptor';
 import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { PolicySummaryComponent } from './Components/policy-summary/policy-summary.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { AllPoliciesComponent } from './Components/all-policies/all-policies.component';
+import { EditpolicyComponent } from './Components/editpolicy/editpolicy.component';
+import { AddnewpolicyComponent } from './Components/addnewpolicy/addnewpolicy.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { ResetPasswordComponent } from './Components/reset-password/reset-passwo
     ProfileComponent,
     MyPoliciesComponent,
     PolicySummaryComponent,
-    ResetPasswordComponent,    
+    ResetPasswordComponent,
+    AllPoliciesComponent,
+    EditpolicyComponent,
+    AddnewpolicyComponent    
 
   ],
   imports: [
