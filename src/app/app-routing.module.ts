@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddnewpolicyComponent } from './Components/addnewpolicy/addnewpolicy.component';
+import { AllPoliciesComponent } from './Components/all-policies/all-policies.component';
 import { ApplicationExceptionComponent } from './Components/application-exception/application-exception.component';
 import { CollectuserdetailPersonalComponent } from './Components/collectuserdetail-personal/collectuserdetail-personal.component';
 import { CollectuserdetailComponent } from './Components/collectuserdetail/collectuserdetail.component';
 import { CollectuserdetailageComponent } from './Components/collectuserdetailage/collectuserdetailage.component';
+import { EditpolicyComponent } from './Components/editpolicy/editpolicy.component';
 import { InsurancetypeComponent } from './Components/insurancetype/insurancetype.component';
 import { MyPoliciesComponent } from './Components/my-policies/my-policies.component';
 import { NavigationbarComponent } from './Components/navigationbar/navigationbar.component';
@@ -65,7 +68,23 @@ const routes: Routes = [
         path: "securitySettings",
         component: ResetPasswordComponent,
         canActivate: [KCAuthGuard]
-      }
+      },
+      {
+        path: "allpolicies",
+        component: AllPoliciesComponent,
+        data: { roles: ['admin']},
+        canActivate: [KCAuthGuard]
+      },
+      {
+        path: "editpolicy/:pid",
+        component: EditpolicyComponent,
+        canActivate: [KCAuthGuard]
+      },
+      {
+        path: "addnewpolicy",
+        component: AddnewpolicyComponent,
+        canActivate: [KCAuthGuard]
+      },
     ]
   }
 ];

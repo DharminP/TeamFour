@@ -11,13 +11,15 @@ import { AppStateService } from 'src/app/appStateService';
 })
 export class NavigationbarComponent implements OnInit {
   isdropdown: boolean = false;
-
+  isAdmin: boolean = false;
   constructor(private toaster: ToastrService,
     private keycloakService: KeycloakService,
     private router: Router,
     public appStateService: AppStateService) { }
 
   ngOnInit(): void {
+    this.isAdmin = this.keycloakService.isUserInRole("admin") ? true : false;
+    console.log('--' + this.isAdmin);
   }
 
   onUpdateProfile() {

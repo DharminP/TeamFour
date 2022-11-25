@@ -7,10 +7,10 @@ export class policy {
     ptype = "";
     pCoverage?: number;
     pPremium?: number = 1;
-    Gender = "";
-    AgeGroup = "";
-    Members = "";
-    Insurer = "";
+    gender = "";
+    ageGroup = "";
+    members = "";
+    insurer = "";
     pgrade?: number;
     pstatus = "";
 }
