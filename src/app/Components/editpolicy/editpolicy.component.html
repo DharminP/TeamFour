@@ -38,14 +38,14 @@
             <div class="col">
                 <label class="col-form-label">Insurer <span style="color:red">*</span></label> 
                     <select class="form-control"id="txtInsurer" name="txtInsurer" required="required"
-                    [(ngModel)]="policy.insurer">
+                    [(ngModel)]="policy.Insurer">
                     <option [value]="null">---Select---</option>
                     <option value="ICICI">ICICI</option>
                     <option value="SBI">SBI</option>
                     <option value="HDFC">HDFC</option>
                     <option value="ICICI">ICICI</option>
                     <option value="NATIONAL">NATIONAL</option>
-                    <option value="STARS">STARS</option>
+                    <option value="STAR">STAR</option>
                 </select>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="col">
                 <label class="col-form-label">Gender</label> 
                 <select class="form-control" id="ddlpGender" name="ddlGender" required="required"
-                    [(ngModel)]="policy.gender">
+                    [(ngModel)]="policy.Gender">
                     <option [value]="null">-- Select --</option>
                     <option value="M">Male</option>
                     <option value="F">Female</option>
@@ -68,7 +68,7 @@
             <div class="col">
                 <label class="col-form-label">Age Group</label> 
                 <select class="form-control" id="ddlageGroup" name="ddlageGroup" required="required"
-                    [(ngModel)]="policy.ageGroup">
+                    [(ngModel)]="policy.AgeGroup">
                     <option [value]="null">---Select---</option>
                     <option value="18-30">18-30 Years</option>
                     <option value="30-45">30-45 Years</option>
@@ -80,11 +80,12 @@
             <div class="col">
                 <label class="col-form-label">Members</label>
                 <select class="form-control" id="ddlMembers" name="ddlMembers" required="required"
-                [(ngModel)]="policy.members">
+                [(ngModel)]="policy.Members">
                 <option [value]="null">---Select---</option>
                 <option value="U">Self</option>
-                <option value="S">Spouse</option>
-                <option value="C">Child</option>
+                <option value="U_S">Self + Spouse</option>
+                <option value="U_C">Self + Child</option>
+                <option value="U_S_C">Self + Spouse + Child</option>
                 </select>
             </div>
            

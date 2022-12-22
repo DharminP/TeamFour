@@ -13,17 +13,17 @@ export class AddnewpolicyComponent implements OnInit {
   policy: policy = {
     pid: 0,
     pname: "",
-    ptype: "null",
-    pgrade: 0,
-    pstatus: "Active",
+    ptype: "GMC",
+    pgrade: 12,
+    pstatus: "A",
     pdesc_short: "",
     pdesc: "",
     pCoverage: 0,
     pPremium: 0,
-    gender: "null",
-    ageGroup: "null",
-    members: "null",
-    insurer : "null"
+    Gender: "M",
+    AgeGroup: "18-30",
+    Members: "U",
+    Insurer : "null"
   }
   constructor(private policyservice: PoliciesServiceService, private router: Router, private toastr: ToastrService) { }
 
@@ -44,7 +44,7 @@ export class AddnewpolicyComponent implements OnInit {
       this.toastr.warning("Please select policy grade.")
       return;
     }
-    else if (this.policy.insurer == "null") {
+    else if (this.policy.Insurer == "null") {
       this.toastr.warning("Please select insurer.")
       return;
     }

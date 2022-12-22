@@ -10,7 +10,7 @@
             </div>
             <div class="col">
                 <label class="col-form-label">Policy Type <span style="color:red">*</span></label>
-                <select id="ddlPolicyType" name="ddlPolicyType" class="form-control"  required="required"
+                <select id="ddlPolicyType" name="ddlPolicyType" class="form-control" required="required"
                     [(ngModel)]="policy.ptype">
                     <option [value]="null">-- Select --</option>
                     <option value="GMC">GMC</option>
@@ -20,8 +20,8 @@
             </div>
             <div class="col">
                 <label class="col-form-label">Short Description</label>
-                <input type="text" id="txtpdesc_short" name="txtpdesc_short" class="form-control" placeholder="Short Description"
-                    [(ngModel)]="policy.pdesc_short" required="required">
+                <input type="text" id="txtpdesc_short" name="txtpdesc_short" class="form-control"
+                    placeholder="Short Description" [(ngModel)]="policy.pdesc_short" required="required">
             </div>
         </div>
         <div class="row">
@@ -31,21 +31,21 @@
                     [(ngModel)]="policy.pgrade" required="required">
             </div>
             <div class="col">
-                <label class="col-form-label">Coverage</label> 
+                <label class="col-form-label">Coverage</label>
                 <input type="text" id="txtCoverage" name="txtCoverage" class="form-control" placeholder="Coverage"
                     [(ngModel)]="policy.pCoverage" required="required">
             </div>
             <div class="col">
-                <label class="col-form-label">Insurer <span style="color:red">*</span></label> 
-                    <select class="form-control"id="txtInsurer" name="txtInsurer" required="required"
-                    [(ngModel)]="policy.insurer">
+                <label class="col-form-label">Insurer <span style="color:red">*</span></label>
+                <select class="form-control" id="txtInsurer" name="txtInsurer" required="required"
+                    [(ngModel)]="policy.Insurer">
                     <option [value]="null">---Select---</option>
                     <option value="ICICI">ICICI</option>
                     <option value="SBI">SBI</option>
                     <option value="HDFC">HDFC</option>
                     <option value="ICICI">ICICI</option>
                     <option value="NATIONAL">NATIONAL</option>
-                    <option value="STARS">STARS</option>
+                    <option value="STAR">STAR</option>
                 </select>
             </div>
         </div>
@@ -56,51 +56,50 @@
                     [(ngModel)]="policy.pPremium" required="required">
             </div>
             <div class="col">
-                <label class="col-form-label">Gender</label> 
+                <label class="col-form-label">Gender</label>
                 <select class="form-control" id="ddlpGender" name="ddlGender" required="required"
-                    [(ngModel)]="policy.gender">
-                    <option [value]="null">-- Select --</option>
+                    [(ngModel)]="policy.Gender">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                     <option value="O">Others</option>
                 </select>
             </div>
             <div class="col">
-                <label class="col-form-label">Age Group</label> 
+                <label class="col-form-label">Age Group</label>
                 <select class="form-control" id="ddlageGroup" name="ddlageGroup" required="required"
-                    [(ngModel)]="policy.ageGroup">
-                    <option [value]="null">---Select---</option>
-                    <option value="18-30">18-30 Years</option>
+                    [(ngModel)]="policy.AgeGroup">
+                    <option value="18-30" selected>18-30 Years</option>
                     <option value="30-45">30-45 Years</option>
                     <option value="45-60">45-60 Years</option>
                 </select>
             </div>
         </div>
-        <div class="row">   
+        <div class="row">
             <div class="col">
                 <label class="col-form-label">Members</label>
                 <select class="form-control" id="ddlMembers" name="ddlMembers" required="required"
-                [(ngModel)]="policy.members">
-                <option [value]="null">---Select---</option>
-                <option value="U">Self</option>
-                <option value="S">Spouse</option>
-                <option value="C">Child</option>
+                    [(ngModel)]="policy.Members">
+                    <option value="U" selected>Self</option>
+                    <option value="U_S">Self + Spouse</option>
+                    <option value="U_C">Self + Child</option>
+                    <option value="U_S_C">Self + Spouse + Child</option>
                 </select>
             </div>
-           
+
             <div class="col">
-                <label class="col-form-label">Description</label> 
-                <textarea type="text" id="txtDescription" name="txtDescription" class="form-control" placeholder="Description"
-                    [(ngModel)]="policy.pdesc" required="required"> </textarea> 
+                <label class="col-form-label">Description</label>
+                <textarea type="text" id="txtDescription" name="txtDescription" class="form-control"
+                    placeholder="Description" [(ngModel)]="policy.pdesc" required="required"> </textarea>
             </div>
             <div class="col">
-                <label class="col-form-label">Status</label> 
-                <select class="form-control" id="ddlpolicytype" name="ddlpolicytype" disabled required="required"
+                <label class="col-form-label">Status</label>
+                <select class="form-control" id="ddlpolicyStatus" name="ddlpolicyStatus" disabled required="required"
                     [(ngModel)]="policy.pstatus">
                     <option value="A">Active</option>
                     <option value="I">Inactive</option>
                 </select>
             </div>
+            
         </div>
         <br>
         <!-- ---------------------------------------------- -->

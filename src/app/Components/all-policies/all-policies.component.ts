@@ -9,7 +9,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./all-policies.component.css']
 })
 export class AllPoliciesComponent implements OnInit {
-  policies = new Array<policy>;
+  // policies = new Array<policy>;
+  policies: policy[] = [];
   term: string = "";
   constructor(private policyservice: PoliciesServiceService
     , private toastr: ToastrService
@@ -19,8 +20,9 @@ export class AllPoliciesComponent implements OnInit {
     this.policyservice.GetAllPolicy()
       .subscribe({
         next: (response) => {
+          debugger;
           console.log(response);
-          this.policies = response;
+          this.policies = JSON.parse(JSON.stringify(response)).Result;          
         }
       })
   }
@@ -29,8 +31,13 @@ export class AllPoliciesComponent implements OnInit {
     this.policyservice.DeletePolicy(parseInt(pid))
       .subscribe({
         next: (response) => {
-          this.policies = response;
-          this.toastr.warning("Deleted Successfully.")
+          if (response != null) {
+            this.policies = JSON.parse(JSON.stringify(response)).Result;
+            this.toastr.warning("Deleted Successfully.")
+          }
+          else{
+            this.toastr.warning("No such policy found.")
+          }
         }
       })
   }

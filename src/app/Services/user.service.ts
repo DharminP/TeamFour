@@ -20,9 +20,17 @@ export class UserService {
     return this.httpclient.get<policy[]>(RequesteURL)    
   }
 
-  public GetAllPolicies(): Observable<policy[]> {
+  // public GetAllPolicies(): Observable<policy[]> {
+  //   var RequesteURL = this.url + '/Dashboard'        
+  //   return this.httpclient.get<policy[]>(RequesteURL)    
+  // }
+  public GetAllPolicies() {
+    
     var RequesteURL = this.url + '/Dashboard'        
-    return this.httpclient.get<policy[]>(RequesteURL)    
+    console.log("GetAllPolicies Before");
+    console.log(this.httpclient.get(RequesteURL))
+    console.log("GetAllPolicies after");
+    return this.httpclient.get(RequesteURL)    
   }
 
   public GetMyPolicy(): Observable<userPolicy[]> {

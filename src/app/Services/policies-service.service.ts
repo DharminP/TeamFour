@@ -25,7 +25,7 @@ export class PoliciesServiceService {
     return this.httpclient.get<policy>(this.adminUrl + '/' + id);
   }
   public UpdatePolicy(policy: policy): Observable<policy> {
-    console.log("ES" + policy.members);
+    console.log("ES" + policy.Members);
     return this.httpclient.put<policy>(this.adminUrl, policy);
   }
 }

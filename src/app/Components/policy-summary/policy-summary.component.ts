@@ -26,11 +26,11 @@ export class PolicySummaryComponent implements OnInit {
     let policyId = UUID.UUID().split('-')[0];
     this.toaster.success("Your Policy Number is " + policyId);
     let myPolicy = new userPolicy();
-    myPolicy.ageGroup = this._policyChoosen.ageGroup;
-    myPolicy.gender = this._policyChoosen.gender;
-    myPolicy.members = this._policyChoosen.members;
+    myPolicy.AgeGroup = this._policyChoosen.AgeGroup;
+    myPolicy.Gender = this._policyChoosen.Gender;
+    myPolicy.Members = this._policyChoosen.Members;
     myPolicy.pdesc = this._policyChoosen.pdesc;
-    myPolicy.insurer = this._policyChoosen.insurer;
+    myPolicy.Insurer = this._policyChoosen.Insurer;
     myPolicy.pCoverage = this._policyChoosen.pCoverage;
     myPolicy.pname = this._policyChoosen.pname;
     myPolicy.pPremium = this._policyChoosen.pPremium;

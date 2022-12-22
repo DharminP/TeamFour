@@ -9,7 +9,7 @@ import { PoliciesServiceService } from 'src/app/Services/policies-service.servic
   templateUrl: './editpolicy.component.html',
   styleUrls: ['./editpolicy.component.css']
 })
-export class EditpolicyComponent implements OnInit {
+export class EditpolicyComponent implements OnInit {  
   policy: policy = {
     pid: 0,
     pname: "",
@@ -20,10 +20,10 @@ export class EditpolicyComponent implements OnInit {
     pdesc: "",
     pCoverage: 0,
     pPremium: 0,
-    gender: "",
-    ageGroup: "",
-    members: "",
-    insurer: ""
+    Gender: "",
+    AgeGroup: "",
+    Members: "",
+    Insurer: ""
   }
   constructor(private policyservice: PoliciesServiceService
     , private route: ActivatedRoute
@@ -38,8 +38,8 @@ export class EditpolicyComponent implements OnInit {
           this.policyservice.GetPolicyById(parseInt(id))
             .subscribe({
               next: (response) => {
-                console.log(response);
-                this.policy = response;
+                console.log(response)                
+                this.policy = JSON.parse(JSON.stringify(response)).Result[0]       
               }
             })
         }
@@ -60,7 +60,7 @@ export class EditpolicyComponent implements OnInit {
       this.toastr.warning("Please select policy grade.")
       return;
     }
-    else if (this.policy.insurer == "null") {
+    else if (this.policy.Insurer == "null") {
       this.toastr.warning("Please select insurer.")
       return;
     }
